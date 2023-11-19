@@ -70,12 +70,75 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  let licenseSection = "";
+  
+  // if a licence has been selected, create licence section with link to licence information
+  if (license) {
+    licenseSection += "## License\n";
+    licenseSection += "Please see" + renderLicenseLink(license) + "to get detailed information for this licence.\n";
+  }
+  return licenseSection;
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 
+    ## Description
+
+    * ${data.description}
+
+    ${renderLicenseBadge(data.license)}
+
+    ## Table of Conntents
+    * [Instalation](#instalation)
+    * [Usage](#usage)
+    * [Contribution](#contribution)
+    * [Testing](#testing)
+    * [Questions](#questions)
+    * [License](#license)
+    
+    ## Installation
+
+     _Follow these steps to properly install this application:_
+
+     ${data.installation}
+
+    ## Usage
+     
+     _Instruction for use:_
+
+     ${data.instruction}
+
+    ## Contribution
+
+      _If you like to contribute, please follow these guidelines:_
+
+      ${data.contribution}
+    
+    ## Testing
+
+      _Instructions for testing application:_
+
+      ${data.testing}
+
+    ## Questions
+
+      _For further questions:_
+
+      ${data.questions}
+
+      _Contact Info:_
+
+      GitHub: [${data.username}](https://github.com/${data.username})
+
+      Email: [${data.email}](mailto:${data.email})
+
+    ## License
+
+      ${renderLicenseSection(data.license)} 
+      
 `;
 }
 
