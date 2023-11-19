@@ -26,7 +26,7 @@ function renderLicenseBadge(license) {
   } else {
     license.license = "N/A";
   }
-  return yourLicense;
+  return badge;
 }
 
 // TODO: Create a function that returns the license link
