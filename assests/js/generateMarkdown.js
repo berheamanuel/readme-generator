@@ -3,7 +3,7 @@
 // Source: https://stackoverflow.com/questions/67013842/trying-to-place-license-badge-within-readme-md-using-node-js-but-getting-error-a
 // https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
 function renderLicenseBadge(license) {
-  let licenseType = license.license; 
+  let licenseType = `${license}`; 
   let badge = ''
   if(licenseType === 'GNU GPL v3') {
     badge = `![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)`
@@ -24,7 +24,7 @@ function renderLicenseBadge(license) {
   } else if (licenseType === 'Apache 2.0 License'){
     badge = `![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)`
   } else {
-    license.license = "N/A";
+    badge = "N/A";
   }
   return badge;
 }
@@ -34,7 +34,8 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
   let licenseLink = '';
   // select correct license link for the selected license
-  switch (license) {
+  let licenseInput = `${license}`;
+  switch (licenseInput) {
     case 'GNU GPL v3':
       licenseLink = 'https://www.gnu.org/licenses/gpl-3.0';
       break;
@@ -74,70 +75,73 @@ function renderLicenseSection(license) {
   let licenseSection = "";
   
   // if a licence has been selected, create licence section with link to licence information
-  if (license) {
-    licenseSection += "## License\n";
-    licenseSection += "Please see" + renderLicenseLink(license) + "to get detailed information for this licence.\n";
+  if (license != 'none') {
+    
+    licenseSection = "Please see:" + " " + renderLicenseLink(license) + " " + "to get detailed information for this licence.\n";
   }
   return licenseSection;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+ 
+  return  `
+  # ${data.title}
 
-    ## Description
+  ${renderLicenseBadge(data.license)}
 
-    * ${data.description}
+  ## Description
 
-    ${renderLicenseBadge(data.license)}
+  * ${data.description}
 
-    ## Table of Conntents
-    * [Instalation](#instalation)
-    * [Usage](#usage)
-    * [Contribution](#contribution)
-    * [Testing](#testing)
-    * [Questions](#questions)
-    * [License](#license)
+
+  ## Table of Conntents
+  * [Instalation](#instalation)
+  * [Usage](#usage)
+  * [Contribution](#contribution)
+  * [Testing](#testing)
+  * [Questions](#questions)
+  * [License](#license)
     
-    ## Installation
+  ## Installation
 
-     _Follow these steps to properly install this application:_
+  _Follow these steps to properly install this application:_
 
-     ${data.installation}
+  ${data.installation}
 
-    ## Usage
+  ## Usage
      
-     _Instruction for use:_
+  _Instruction for use:_
 
-     ${data.instruction}
+  ${data.instruction}
 
-    ## Contribution
+  ## Contribution
 
-      _If you like to contribute, please follow these guidelines:_
+  _If you like to contribute, please follow these guidelines:_
 
-      ${data.contribution}
+  ${data.contribution}
     
-    ## Testing
+  ## Testing
 
-      _Instructions for testing application:_
+  _Instructions for testing application:_
 
-      ${data.testing}
+  ${data.testing}
 
-    ## Questions
+  ## Questions
 
-      _For further questions:_
+  _For further questions:_
 
-      ${data.questions}
+  ${data.questions}
 
-      _Contact Info:_
+  _Contact Info:_
 
-      GitHub: [${data.username}](https://github.com/${data.username})
+  * GitHub: [${data.username}](https://github.com/${data.username})
 
-      Email: [${data.email}](mailto:${data.email})
+  * Email: [${data.email}](mailto:${data.email})
 
-    ## License
+  ## License
 
-      ${renderLicenseSection(data.license)} 
+  * ${renderLicenseSection(data.license)} 
       
 `;
 }
