@@ -1,11 +1,11 @@
 
-  # Professional README Generator
+  # Proffesional README Generator
 
-  ![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)
+  ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
   ## Description
 
-  * Provide a short description explaining the what, why, and how of your project.
+  * Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
 
   ## Table of Conntents
@@ -38,13 +38,13 @@
 
   _Instructions for testing application:_
 
-  If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+  Go the extra mile and write tests for your application. Then provide examples on how to run 
 
   ## Questions
 
   _For further questions:_
 
-  For further quesions please contact me
+  
 
   _Contact Info:_
 
@@ -54,6 +54,6 @@
 
   ## License
 
-  * Please see: https://opensource.org/licenses/MPL-2.0 to get detailed information for this licence.
+  * Please see: https://opensource.org/licenses/MIT to get detailed information for this licence.
  
       
